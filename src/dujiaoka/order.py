@@ -2,7 +2,7 @@ import re
 
 from bs4 import BeautifulSoup
 
-from log import Log
+from .log import Log
 from .config import config
 
 logger = Log(__name__).getlog()
