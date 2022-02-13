@@ -1,6 +1,6 @@
 import os
 
-from Common.requests import getSession
+from .requests import getSession
 from .log import Log
 
 logger = Log(__name__).getlog()

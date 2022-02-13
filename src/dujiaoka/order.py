@@ -24,8 +24,8 @@ def parseOrder(order, require_text):
             soup.find(
                 "textarea", class_="form-control field_wholesale_price_cnf _normal_"
             )
-                .get_text()
-                .strip()
+            .get_text()
+            .strip()
         )
 
         order["text"] = order_text
@@ -34,8 +34,8 @@ def parseOrder(order, require_text):
 
 
 def get(
-        suffix: str = "/order",
-        require_text: bool = False,
+    suffix: str = "/order",
+    require_text: bool = False,
 ):
     res = config.session.get(suffix)
     soup = BeautifulSoup(res.text, "html.parser")

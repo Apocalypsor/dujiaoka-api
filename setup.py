@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="dujiaoka-api",
-    version="0.0.2",
+    version="0.0.3",
     author="Apocalypsor",
     author_email="sudo@dov.moe",
     description="API for dujiaoka",
@@ -15,6 +15,7 @@ setuptools.setup(
     project_urls={
         "Bug Tracker": "https://github.com/Apocalypsor/dujiaoka-api/issues",
     },
+    install_requires=["beautifulsoup4", "requests", "requests_toolbelt"],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
