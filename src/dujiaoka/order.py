@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 
 from .log import Log
 from .config import config
+from .util import getPage
 
 logger = Log(__name__).getlog()
 
@@ -37,16 +38,11 @@ def get(
     suffix: str = "/order",
     require_text: bool = False,
 ):
-    res = config.session.get(suffix)
-    soup = BeautifulSoup(res.text, "html.parser")
-    soup_orders = soup.find("table", class_="table custom-data-table data-table").tbody
-
-    if "暂无数据" in soup_orders.text:
-        logger.info("[+] No orders")
+    if not suffix.startswith("/order"):
+        logger.error("[-] Invalid suffix, please include /order")
         return []
-    else:
-        orders = soup_orders.find_all("tr")
-        return [parseOrder(order, require_text) for order in orders]
+
+    return [parseOrder(order, require_text) for order in getPage(suffix)]
 
 
 def modify(id: str, status: int, order_id: str):
