@@ -1,10 +1,8 @@
-from bs4 import BeautifulSoup
-
 from .log import Log
-from .config import config
 from .util import getPage
 
 logger = Log(__name__).getlog()
+
 
 def parseCarmi(carmi):
     carmi_params = carmi.find_all("td")
@@ -21,6 +19,7 @@ def parseCarmi(carmi):
     }
 
     return carmi
+
 
 def get(
     suffix: str = "/carmis",

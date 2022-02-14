@@ -2,8 +2,8 @@ import re
 
 from bs4 import BeautifulSoup
 
-from .log import Log
 from .config import config
+from .log import Log
 from .util import getPage
 
 logger = Log(__name__).getlog()
@@ -45,7 +45,8 @@ def get(
     return [parseOrder(order, require_text) for order in getPage(suffix)]
 
 
-def modify(id: str, status: int, order_id: str):
+def modify(id, status: int, order_id: str = None):
+    id = str(id)
     res = config.session.get("/order/" + id)
     token = re.search(r'Dcat\.token = "(.*?)"', res.text).group(1)
     mod_order = config.session.post(
