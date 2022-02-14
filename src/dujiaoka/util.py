@@ -11,7 +11,7 @@ def getPage(suffix: str,):
     soup_page = soup.find("table", class_="table custom-data-table data-table").tbody
 
     if "暂无数据" in soup_page.text:
-        logger.info("[+] No orders")
+        logger.info("[+] Empty page")
         return []
     else:
         page_num = int(soup.find_all("li", class_="page-item")[-2].a.get_text())
