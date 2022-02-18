@@ -14,8 +14,14 @@ def parseOrder(order, require_text):
     order = {
         "id": order_params[1].get_text().strip(),
         "order_id": order_params[2].a["data-content"].strip(),
+        "order_name": order_params[3].get_text().strip(),
         "email": order_params[5].a["data-content"].strip(),
+        "product": order_params[6].get_text().strip(),
+        "unit_price": order_params[7].get_text().strip(),
         "number": int(order_params[8].get_text().strip()),
+        "total_price": order_params[9].get_text().strip(),
+        "actual_payment": order_params[13].get_text().strip(),
+        "payment_channel": order_params[14].get_text().strip(),
     }
 
     if require_text:
