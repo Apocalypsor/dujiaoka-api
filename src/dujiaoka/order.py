@@ -22,6 +22,7 @@ def parseOrder(order, require_text):
         "total_price": order_params[9].get_text().strip(),
         "actual_payment": order_params[13].get_text().strip(),
         "payment_channel": order_params[14].get_text().strip(),
+        "status": order_params[18].find("option", selected=True).get_text().strip(),
     }
 
     if require_text:
