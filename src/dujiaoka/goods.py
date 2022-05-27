@@ -40,7 +40,7 @@ def get(
     return [parseGood(good) for good in getPage(suffix)]
 
 
-def restocking(
+def restock(
         id,
         mode: str = "~",
         amount: int = 0
