@@ -60,8 +60,12 @@ def restock(
     if mode == "~":
         return "viewed", stock
 
-    elif mode in ["+", "-"]:
-        new_stock = stock + int(mode + str(amount))
+    else:
+        if mode in ["+", "-"]:
+            new_stock = stock + int(mode + str(amount))
+        elif mode == "=":
+            new_stock = amount
+ 
         if new_stock < 0:
             return "not_enough_stock", stock
 
