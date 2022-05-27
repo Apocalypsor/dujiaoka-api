@@ -52,8 +52,8 @@ def restock(
 
     token = re.search(r'Dcat\.token = "(.*?)"', res.text).group(1)
 
-    stock = int(re.search(r'库存.+?<div class="box-body">(\d+)&nbsp;', res.text.replace("\n", "")).group(1))
-    type = re.search(r'商品类型.*?<div class="box-body">(.+?)&nbsp;', res.text.replace("\n", "")).group(1)
+    stock = int(re.search(r'库存.+?<div class="box-body"> *(\d+) *&nbsp;', res.text.replace("\n", "")).group(1))
+    type = re.search(r'商品类型.*?<div class="box-body"> *(.+?) *&nbsp;', res.text.replace("\n", "")).group(1)
 
     if type != "人工处理": return -1
 
